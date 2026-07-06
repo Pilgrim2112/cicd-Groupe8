@@ -1,0 +1,65 @@
+name: Optimization_Groupe8
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_Groupe8:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+
+      # Mise en cache des dépendances npm
+      - name: Cache Node modules
+        uses: actions/cache@v5
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install Dependencies
+        run: npm install
+
+      # Simulation de la création d'un livrable (Build)
+      - name: Build Application
+        run: |
+          mkdir dist
+          echo "Build du Groupe8 prêt pour le déploiement" > dist/index.html
+
+      # Publication de l'artefact téléchargeable
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: production-build-Groupe8
+          path: dist/
+
+  test_Groupe8:
+    needs: build_Groupe8
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+
+      - name: Cache Node modules
+        uses: actions/cache@v5
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Tests
+        run: npm test
