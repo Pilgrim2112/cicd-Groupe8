@@ -10,7 +10,7 @@ describe('GET /', () => {
         request(server)
             .get('/')
             .expect('Content-Type', /json/)
-            .expect(400, { status: "success", message: "Hello Groupe8" }, done);
+            .expect(200, { status: "success", message: "Hello Groupe8" }, done);
           
     });
 });
