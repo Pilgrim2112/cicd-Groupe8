@@ -2,13 +2,13 @@ name: push_Groupe8
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+     - main
 
 jobs:
   hello_Groupe8:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v4
       - name: Dit Hello
         run: echo Hello, CI!
