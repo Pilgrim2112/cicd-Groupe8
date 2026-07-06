@@ -1,0 +1,17 @@
+{
+  "name": "cicd-app-groupe8",
+  "version": "1.0.0",
+  "description": "Application support examen CI/CD Groupe8",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha test.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "mocha": "^10.4.0",
+    "supertest": "^7.0.0"
+  }
+}
