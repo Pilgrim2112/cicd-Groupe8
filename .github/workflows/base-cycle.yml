@@ -1,0 +1,34 @@
+name: Base_Cycle_Groupe8
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_Groupe8:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: Install Dependencies
+        run: npm ci
+
+  test_Groupe8:
+    needs: build_Groupe8
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run Tests
+        run: npm test
