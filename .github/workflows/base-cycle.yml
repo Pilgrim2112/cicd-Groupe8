@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 24
       - name: Install Dependencies
-        run: npm ci
+        run: npm install
 
   test_Groupe8:
     needs: build_Groupe8
@@ -29,6 +29,6 @@ jobs:
         with:
           node-version: 24
       - name: Install Dependencies
-        run: npm ci
+        run: npm install
       - name: Run Tests
         run: npm test
