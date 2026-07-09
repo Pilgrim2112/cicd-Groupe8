@@ -1,6 +1,6 @@
 #Rapport Examen Pipeline CI/CD Avancé - Groupe 8
 
-## Membres du Groupe
+## Membres du Groupe8
 * Benit BATOMENE
 * Laurfel KAYA
 
